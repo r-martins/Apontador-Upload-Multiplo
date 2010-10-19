@@ -1,1 +1,1 @@
-ECHO est  ativado.
+Para configurar a APP, preencha as chaves e secrets no config.php e no /classes/ApontadorApiConfig.php.
