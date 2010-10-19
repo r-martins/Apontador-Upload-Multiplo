@@ -1,37 +1,0 @@
-10
-
-dir
-5
-svn://ricardomartins.info/ricardomartins/apontador/trunk/upload_multiplo/classes/oauth/store/oracle/OracleDB
-svn://ricardomartins.info/ricardomartins/apontador
-
-
-
-2010-10-15T14:14:24.628577Z
-4
-apontador
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-8e400236-c3fd-4bf4-af02-d13953203e52
-
-1_Tables
-dir
-
-2_Sequences
-dir
-
-3_Procedures
-dir
-
