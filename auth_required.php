@@ -7,7 +7,6 @@ require_once "config.php";
 $user = 'ricardo.martins@lbslocal.com';
 
 
-$callbackurl = "http://localhost/apontador/upload_multiplo/callback.php"; //url de retorno
 
 $lbsid = 'C40649834B4B1Z4B12';
 
