@@ -1,13 +1,15 @@
 <?php
-$dsn = $usr = $pwd = $user = $key = $secret = '';
+$dsn = $usr = $pwd = $user = $key = $secret = $callbackurl = '';
 if($_SERVER['HTTP_HOST'] != 'localhost'){
 	$user = 'ricardo.martins@lbslocal.com';
 	$key = ''; // fill with your public key
 	$secret = ''; // fill with your secret key
+	$callbackurl = ""; //url de retorno
 }else{
 	$user = 'ricardo.martins@lbslocal.com';
 	$key = ''; // fill with your public key
 	$secret = ''; // fill with your secret key
+	$callbackurl = ""; //url de retorno
 }
 
 if($_SERVER['HTTP_HOST'] == 'localhost'){
