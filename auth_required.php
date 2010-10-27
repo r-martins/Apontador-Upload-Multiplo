@@ -39,7 +39,7 @@ try
 	}
 
 	//redireciona pro apontador pedindo autorizacao
-	$oauth_callback = "$callbackurl?&key=$key&secret=$secret&token=$oauth_token&token_secret=$oauth_token_secret&endpoint=" . urlencode($url_authorize);
+	$oauth_callback = "$callbackurl&key=$key&secret=$secret&token=$oauth_token&token_secret=$oauth_token_secret&endpoint=" . urlencode($url_authorize);
 	$auth_url = $url_authorize . "?oauth_token=$oauth_token&oauth_callback=" . urlencode($oauth_callback) . "";
 //	var_dump($key,$secret,$auth_url);exit;
 	header("Location: $auth_url");

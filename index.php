@@ -175,7 +175,7 @@ if(!isset($_COOKIE['oauth_token'])){
 	//adiciona o usuario na tb upload_foto a fim de sabermos qtas fotos ele enviou usando o upload_multiplo 
 	require_once 'classes/ApontadorApiLib.php';
 	$usr_info = apontadorChamaApi("GET", "users/self", array("type"=>"json"), $_COOKIE['oauth_token'], $_COOKIE['oauth_token_secret']);
-	var_dump($usr_info);
+//	var_dump($usr_info);
 	$usr_info = json_decode($usr_info);
 	$usr_info = $usr_info->user;
 	if(!isset($_COOKIE['user_id'])){

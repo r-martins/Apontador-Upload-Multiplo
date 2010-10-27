@@ -95,6 +95,7 @@ function apontadorProcessaAutorizacao() {
 function apontadorChamaApi($verbo="GET", $metodo, $params=array(), $oauth_token="", $oauth_token_secret="") {
 	extract(apontadorGetConfig());
 	$endpoint = "http://api.apontador.com.br/v1/$metodo";
+//	$endpoint = "http://192.168.2.244/freeapi/$metodo";
 	if (!$oauth_token) {
 		$queryparams = http_build_query($params);
 		$auth_hash = base64_encode("$email:$key");
@@ -119,6 +120,7 @@ function _post($url, $method, $data = null, $optional_headers = null)
 {
 	$options = array(
 	    CURLOPT_CUSTOMREQUEST => $method,
+//	    CURLOPT_PORT => 8080,
 	);
 
 	if ($optional_headers !== null) {
