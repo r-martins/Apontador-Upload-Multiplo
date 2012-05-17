@@ -10,54 +10,51 @@
    TODO customize this sample style
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
-
-body {
-    margin: 20px;
-    padding: 0;
-    font-family: Helvetiva, Arial;
-    background-color: #EFEFEF;
+body{color:#666;background:#fff;font:normal 14px "Helvetica Neue Light", HelveticaNeue-Light, "Helvetica Neue", Helvetica, Arial, sans-serif;line-height:1.5;margin:20px;}
+h1, h2, h3, h4, h5, h6{color:#444;font-weight:normal;}
+h2{text-align:center;margin:1em 0;}
+h3{border-top:1px solid #ccc;padding-top:1em;}
+.wrapper{width:640px;margin:0 auto;background:#efefef;padding:20px 0 0;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;-moz-box-shadow: 0 0 5px #666;-webkit-box-shadow: 0 0 5px #666;box-shadow: 0 0 5px #666;}
+.logo{width:200px;margin:0 auto;display:block;}
+.contentwrapper{padding:20px;}
+.vai{font-size:14px;padding:5px;cursor:pointer;}
+input[type="text"]{
+	font-size:14px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border:1px solid #ccc;
+	padding:4px;
 }
-
-li{
-    font-size: 12px;
-}
-
-ul{
-    list-style-image: url("../img/14.gif");
-    
-}
-
+ul, li{margin:0;padding:0;}
+li{margin:0.5em 0;}
+#poi_list{list-style-position:inside;}
 #poi_list a{
-    position:relative;
-    top:-6px;
-    left: -8px;
+	padding:5px 2px;
 }
-#poi_list{
-    line-height: 1.1em;
-}
-a:link,a:active,a:hover{color: #4F4F4F;}
-
+#poi_list a.selected{color:#333;}
 a:link, a:visited, a:active {
     text-decoration: none;
-    color: #000;
+    color: #666;
 }
 a:hover{
     text-decoration: underline;
     background-color: #dedede;
+	color:#333;
 }
 
 .selected, #msgPesquisa {
     font-weight: bold;
 }
+
 #msgPesquisa{
     color:#0F0F0F;
     font-size:14px;
     margin-top:20px;
 }
-
 /*
 SWF UPLOAD
-*/
+
 #swfupload-control p{ margin:10px 5px; font-size:0.9em; }
 #log{ margin:0; padding:0; width:500px;}
 #log li{ list-style-position:inside; margin:2px; border:1px solid #ccc; padding:10px; font-size:12px;
@@ -68,3 +65,9 @@ SWF UPLOAD
 #log li.success{ border:1px solid #339933; background:#ccf9b9; }
 #log li span.cancel{ position:absolute; top:5px; right:5px; width:20px; height:20px;
 background:url('../js/swfupload/cancel.png') no-repeat; cursor:pointer; }
+*/
+
+.footer {
+	text-align:center;
+	padding-bottom:6px;
+}

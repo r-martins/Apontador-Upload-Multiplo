@@ -5,7 +5,6 @@ include_once "classes/OAuth.php";
 include_once "classes/url_reader.php";
 require_once "config.php";
 
-
 $consumer = new OAuthConsumer($key, $secret, NULL);
 $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
 
@@ -35,8 +34,10 @@ if($reader->success()){
     setcookie('oauth_token', $access_token['oauth_token'], time()+2592000 , '/' ) or die('seu navegador não aceita cookies');
     setcookie('oauth_token_secret', $access_token['oauth_token_secret'], time()+2592000, '/');
     setcookie('user_id', $access_token['user_id'], time()+2592000, '/');
-
-    header('Location:index.php');
+	
+    $urlredir = 'index.php';
+    $urlredir .= (isset($_GET['lbsid']))?'?lbsid='.$_GET['lbsid']:'';
+    header('Location:' . $urlredir);
 }else{
     throw new Exception(sprintf('Falha ao buscar auth token e token secret em %s. %s', (string)$acc_req,  $reader->get_errors()));
 }

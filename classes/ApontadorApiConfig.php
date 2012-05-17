@@ -27,19 +27,19 @@ function apontadorGetConfig() {
 	if($_SERVER['HTTP_HOST'] != 'localhost'){
 		return array(
 			"email" => "ricardo.martins@lbslocal.com",
-	//		"key" => "",
-	//		"secret" => "",
-			"key" => "",
-			"secret" => "",
+	//		"key" => "36gcCCI_nv1kQrWTGjnXCBfgVjlCT8KITrkOp_HcopA~",
+	//		"secret" => "q5_prXzkYCfpr9EB8k4br5ec8uE~",
+			"key" => "36gcCCI_nv1kQrWTGjnXCBfgVjlCT8KITrkOp_HcopA~",
+			"secret" => "q5_prXzkYCfpr9EB8k4br5ec8uE~",
 			"callbackurl" =>  "http://apontador.ricardomartins.info/upload_multiplo/callback.php"
 		);
 	}else{
 		return array(
 			"email" => "ricardo.martins@lbslocal.com",
-	//		"key" => "",
-	//		"secret" => "",
-			"key" => "",
-			"secret" => "",
+	//		"key" => "36gcCCI_nv1kQrWTGjnXCBfgVjlCT8KITrkOp_HcopA~",
+	//		"secret" => "q5_prXzkYCfpr9EB8k4br5ec8uE~",
+			"key" => "36gcCCI_nv2NKa5aEz4RA_9tJYkrnnPS__o_fgRn4uE~",
+			"secret" => "WDqV7pv0VZLum53kTuCJN6Ji5vc~",
 			"callbackurl" =>  "http://localhost/apontador/upload_multiplo/callback.php"
 		);
 	}

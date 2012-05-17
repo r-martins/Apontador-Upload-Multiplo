@@ -2,45 +2,61 @@
 error_reporting(-1);
 require './classes/url_reader.php';
 require 'config.php';
-
 $port = 80;
 
-//pega locais pesquisados
-$url = 'http://api.apontador.com.br/v1/search/places/byaddress?type=json&radius_mt=10000';
+//pega locais pesquisados por address ou apenas informacoes do local (se o lbsid for informado)
+$url = '';
+if(!isset($_GET['lbsid'])){
+	$url = 'http://api.apontador.com.br/v1/search/places/byaddress?type=json&radius_mt=10000';
 
-$cidade = explode(',', utf8_decode($_REQUEST['city']));
-$uf = tiraAcento(strtoupper($cidade[1]));
-$cidade = tiraAcento($cidade[0]);
+	$cidade = explode(',', utf8_decode($_REQUEST['city']));
+	$uf = tiraAcento(strtoupper($cidade[1]));
+	$cidade = tiraAcento($cidade[0]);
+	
+	$term = tiraAcento(utf8_decode(urldecode($_REQUEST['term'])));
+	$cidade = $cidade;
+	$uf = urlencode($uf);
+	$term = urlencode($term);
+	$url .= "&city={$cidade}&state={$uf}&term={$term}";
+			
+}else{
+	$placeid = $_GET['lbsid'];
+	$url = sprintf('http://api.apontador.com.br/v1/places/%s?type=json',$placeid);
+}
 
-$term = tiraAcento(utf8_decode(urldecode($_REQUEST['term'])));
-$cidade = urlencode($cidade);
-$uf = urlencode($uf);
-$term = urlencode($term);
-
+//echo $url;
 $options = array(
     CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
     CURLOPT_PORT => $port,
     CURLOPT_USERPWD => "{$key}:{$secret}",
 );
     
-
-$url .= "&city={$cidade}&uf={$uf}&term={$term}";
 $reader = new Url_Reader($url, $options);
 
 if ($reader->success()) {
     //retornou legal do servidor
     //echo $reader->get();
+    //echo mb_detect_encoding($reader->get());
     $aRetorno = json_decode($reader->get());
     $places = array();
     //var_dump($aRetorno);
-    if(intval($aRetorno->search->result_count) > 0){
-	foreach($aRetorno->search->places as $k=>$place){
-	    $place = $place->place;
-	    $places[$k]['lbsid'] = $place->id;
-	    $places[$k]['nome'] = $place->name;
-	    $places[$k]['link'] = $place->main_url;
-	    $places[$k]['endereco'] = $place->address->street . ' ' . $place->address->number;
-	}
+    if(!isset($_GET['lbsid'])){
+	    if(intval($aRetorno->search->result_count) > 0){
+			foreach($aRetorno->search->places as $k=>$place){
+			    $place = $place->place;
+			    $places[$k]['lbsid'] = $place->id;
+			    $places[$k]['nome'] = $place->name;
+			    $places[$k]['link'] = $place->main_url;
+			    $places[$k]['endereco'] = $place->address->street . ' ' . $place->address->number;
+			}
+	    }
+    }else{//se a busca for por lbsid o formato de retorno √© um pouco diferente
+    	$place = $aRetorno->place;
+	    $places['lbsid'] = $place->id;
+	    $places['nome'] = $place->name;
+	    $places['link'] = $place->main_url;
+	    $places['endereco'] = $place->address->street . ' ' . $place->address->number;
+	    $places = array($places);
     }
 
     echo json_encode($places);
@@ -53,7 +69,7 @@ if ($reader->success()) {
 
 /**
 	*Modelo novo - Luis Ribeiro
-	*arquivo em utf-8 para o vitrine ·?mo
+	*arquivo em utf-8 para o vitrine ÔøΩ?mo
 	*no carrefour tem uma em iso8859-1(ANSI)
 	*/
 
@@ -63,8 +79,8 @@ if ($reader->success()) {
 	    //$saida = urldecode($entrada);
 		
 		$acento = array( 
-							'¡', '¿', '√', '¬', 'ƒ', '”', '“', '’', '‘', '÷', '…', '»', ' ', 'À', 'Õ', 'Ã', 'Œ', 'œ', '⁄', 'Ÿ', '€', '‹', '«',
-							'·', '‡', '„', '‚', '‰', 'Û', 'Ú', 'ı', 'Ù', 'ˆ', 'È', 'Ë', 'Í', 'Î', 'Ì', 'Ï', 'Ó', 'Ô', '˙', '˘', '˚', '¸', 'Á','Ò','—'
+							'√Å', '√Ä', '√É', '√Ç', '√Ñ', '√ì', '√í', '√ï', '√î', '√ñ', '√â', '√à', '√ä', '√ã', '√ç', '√å', '√é', '√è', '√ö', '√ô', '√õ', '√ú', '√á',
+							'√°', '√†', '√£', '√¢', '√§', '√≥', '√≤', '√µ', '√¥', '√∂', '√©', '√®', '√™', '√´', '√≠', '√¨', '√Æ', '√Ø', '√∫', '√π', '√ª', '√º', '√ß','√±','√ë'
 						);
 						
 		$semAcento = array(

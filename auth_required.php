@@ -1,5 +1,6 @@
 <?php
 error_reporting(-1);
+
 include_once "classes/OAuth.php";
 include_once "classes/url_reader.php";
 require_once "config.php";
@@ -7,6 +8,7 @@ require_once "config.php";
 $user = 'ricardo.martins@lbslocal.com';
 
 
+$callbackurl = APP_URL . "callback.php?" . $_SERVER['QUERY_STRING']; //url de retorno
 
 $lbsid = 'C40649834B4B1Z4B12';
 

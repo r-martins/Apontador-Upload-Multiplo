@@ -31,8 +31,13 @@ $resultado = apontadorChamaApi("PUT", "places/$PLACEID/photos/new", array(
 	"type"    => "json",
 	"content" => $data
 	), $oauth_token, $oauth_token_secret);
-var_dump($resultado);
+	
 
+/*
+	$h = fopen('log_upload.log','a+');
+	fwrite($h, var_export($resultado,TRUE));
+	fclose($h);
+*/
 
 //soma 1 foto na tb de upload_foto apenas para fins de estatistica
 try {
