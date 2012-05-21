@@ -11,9 +11,9 @@ $url = 'http://api.apontador.com.br/v1/places/C404577420635Z6357/photos/new';
 $uploaddir = './uploads/'; 
 $file = $uploaddir . basename($_FILES['uploadfile']['name']); 
 $size=$_FILES['uploadfile']['size'];
-if($size>1048576)
+if($size>5242880)
 {
-	echo "error file size > 1 MB";
+	echo "error file size > 5 MB";
 	unlink($_FILES['uploadfile']['tmp_name']);
 	exit;
 }
